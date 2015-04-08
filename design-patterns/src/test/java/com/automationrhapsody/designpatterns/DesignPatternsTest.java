@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class DesignPatternsTest {
-    Browsers browser = Browsers.IE;
+    Browsers browser = Browsers.CHROME;
     WebDriverFacade webDriver = null;
     String url = "http://automationrhapsody.com/examples/utf8icons.html";
 
