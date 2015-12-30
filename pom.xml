@@ -9,5 +9,6 @@
     <name>selenium-samples-java</name>
     <modules>
         <module>design-patterns</module>
+        <module>cucumber-parallel</module>
     </modules>
 </project>
