@@ -70,7 +70,7 @@ public class WikipediaSteps extends BaseSteps {
         WebElement element = driver.findElement(By.cssSelector("div#mp-otd-footer.hlist.noprint div ul li"));
 
         String fullFormat = "Current date: %s (UTC)";
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM d, yyyy");
         String expected = String.format(fullFormat, LocalDate.now().format(dateFormat));
 
         assertEquals(expected, element.getText());

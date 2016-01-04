@@ -2,7 +2,9 @@ package com.automationrhapsody.designpatterns;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -81,6 +83,10 @@ public class NullWebElement implements WebElement {
 
     public String getCssValue(String s) {
         return "";
+    }
+
+    public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
+        return null;
     }
     // </editor-fold>
 }
