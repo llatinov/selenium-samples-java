@@ -1,4 +1,4 @@
-package com.automationrhapsody.cucumberparallel.tests.wikipedia;
+package com.automationrhapsody.cucumber.parallel.tests.wikipedia;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

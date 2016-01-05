@@ -60,7 +60,7 @@
                             <goal>generateRunners</goal>
                         </goals>
                         <configuration>
-                            <glue>com.automationrhapsody.cucumberparallel.tests.wikipedia</glue>
+                            <glue>com.automationrhapsody.cucumber.parallel.tests.wikipedia</glue>
                             <featuresDirectory>src/test/resources/com</featuresDirectory>
                             <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
                             <format>json,html</format>
