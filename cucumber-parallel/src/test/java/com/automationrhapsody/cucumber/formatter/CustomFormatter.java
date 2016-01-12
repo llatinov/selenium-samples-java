@@ -1,6 +1,5 @@
 package com.automationrhapsody.cucumber.formatter;
 
-import java.io.IOException;
 import java.util.List;
 
 import gherkin.formatter.Formatter;
@@ -21,7 +20,7 @@ public class CustomFormatter implements Reporter, Formatter {
 
     private NiceAppendable output;
 
-    public CustomFormatter(Appendable appendable) throws IOException {
+    public CustomFormatter(Appendable appendable) {
         output = new NiceAppendable(appendable);
         output.println("CustomFormatter()");
         System.out.println("CustomFormatter(): " + output.toString());
