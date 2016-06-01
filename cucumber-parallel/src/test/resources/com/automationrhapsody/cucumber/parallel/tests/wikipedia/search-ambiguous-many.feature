@@ -6,6 +6,6 @@ Feature:
     Then Multiple results are shown for '<result>'
 
     Examples:
-      | searchTerm | result                |
-      | mercury    | Mercury may refer to: |
-      | max        | Max may refer to:     |
+      | searchTerm | result                     |
+      | mercury    | Mercury usually refers to: |
+      | max        | Max may refer to:          |
