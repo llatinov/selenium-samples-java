@@ -37,7 +37,7 @@
                     <threadCount>10</threadCount>
                     <parallel>methods</parallel>
                     <includes>
-                        <include>**/*Testing.class</include>
+                        <include>**/DateTimeUtilsTest.class</include>
                     </includes>
                 </configuration>
             </plugin>

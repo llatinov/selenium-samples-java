@@ -5,14 +5,12 @@ import java.util.Queue;
 
 public class RequestUtils {
 
-    private static final ThreadLocal<Queue<String>> MESSAGES_THREAD_SAFE = new ThreadLocal<Queue<String>>() {
+    private static final ThreadLocal<Queue<String>> MESSAGES = new ThreadLocal<Queue<String>>() {
         @Override
         protected Queue<String> initialValue() {
             return new LinkedList<>();
         }
     };
-
-    private static final Queue<String> MESSAGES_THREAD_UNSAFE = new LinkedList<>();
 
     public static String makeSomeRequest(String request) {
         getMessages().add(request);
@@ -40,7 +38,6 @@ public class RequestUtils {
     }
 
     private static Queue<String> getMessages() {
-        //return MESSAGES_THREAD_SAFE.get();
-        return MESSAGES_THREAD_UNSAFE;
+        return MESSAGES.get();
     }
 }
