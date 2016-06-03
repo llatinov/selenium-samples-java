@@ -10,42 +10,49 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-
-public class PrintSequenceTest {
+public class ExecutionSequenceRulesTest {
 
     @ClassRule
     public static PrintSequenceRule classRule = new PrintSequenceRule();
     @Rule
     public PrintSequenceRule testRule = new PrintSequenceRule();
 
+    public ExecutionSequenceRulesTest() {
+        System.out.println("TestClass constructor");
+    }
+
     @BeforeClass
-    public static void beforeClass() {
+    public static void oneTimeSetUp() {
         System.out.println("@BeforeClass");
     }
 
-    @AfterClass
-    public static void afterClass() {
-        System.out.println("@AfterClass");
-    }
-
     @Before
-    public void beforeTest() {
+    public void setUp() {
         System.out.println("@Before");
     }
 
-    @After
-    public void afterTest() {
-        System.out.println("@After");
+    @Test
+    public void test3() {
+        System.out.println("test3 body");
     }
 
     @Test
     public void test1() {
-        assertTrue(true);
+        System.out.println("test1 body");
     }
 
     @Test
     public void test2() {
-        assertTrue(true);
+        System.out.println("test2 body");
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("@After");
+    }
+
+    @AfterClass
+    public static void oneTimeTearDown() {
+        System.out.println("@AfterClass");
     }
 }

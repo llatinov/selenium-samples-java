@@ -29,7 +29,7 @@ public class RequestUtils {
     }
 
     public static void printMessages() {
-        for (Object message : getMessages()) {
+        for (String message : getMessages()) {
             System.out.println(message);
         }
         clearMessages();

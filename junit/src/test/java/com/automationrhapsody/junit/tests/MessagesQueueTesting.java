@@ -6,6 +6,8 @@ import com.automationrhapsody.junit.utils.RequestUtils;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class MessagesQueueTesting {
 
     @Rule
@@ -13,9 +15,10 @@ public class MessagesQueueTesting {
 
     @Test
     public void test1() {
-        RequestUtils.makeSomeRequest("test1request1");
-        RequestUtils.makeAnotherRequest("test1request2");
-        RequestUtils.makeAnotherRequest("test1request3");
+        String result1 = RequestUtils.makeSomeRequest("test1request1");
+        String result2 = RequestUtils.makeAnotherRequest(result1);
+        String actualResult = RequestUtils.makeAnotherRequest(result2);
+        assertEquals("makeAnotherRequestResponse", actualResult);
     }
 
     @Test
