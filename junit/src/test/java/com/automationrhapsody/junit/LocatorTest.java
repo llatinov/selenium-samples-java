@@ -13,6 +13,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -36,6 +37,8 @@ public class LocatorTest {
         locatorUnderTest.locate(1, 1);
 
         verify(locatorServiceMock, times(1)).locate(argThat(new PointMatcher(new Point(1, 1))));
+
+        verifyNoMoreInteractions(locatorServiceMock);
     }
 
     @Test
@@ -70,6 +73,6 @@ public class LocatorTest {
 
     private boolean arePointsEqual(Point p1, Point p2) {
         return p1.getX() == p2.getX()
-                && p1.getY() == p2.getY();
+            && p1.getY() == p2.getY();
     }
 }
