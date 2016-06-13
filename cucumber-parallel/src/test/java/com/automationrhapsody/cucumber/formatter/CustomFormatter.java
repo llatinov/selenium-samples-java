@@ -140,6 +140,6 @@ public class CustomFormatter implements Reporter, Formatter {
 
     private String printResult(Result result) {
         return String.format("status=%s, duration=%s, error_message=%s",
-                result.getStatus(), result.getDuration(), result.getErrorMessage());
+            result.getStatus(), result.getDuration(), result.getErrorMessage());
     }
 }

@@ -7,12 +7,12 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        format = {
-                "json:target/cucumber/wikipedia.json",
-                "html:target/cucumber/wikipedia.html",
-                "pretty"
-        },
-        tags = {"~@ignored"}
+    format = {
+        "json:target/cucumber/wikipedia.json",
+        "html:target/cucumber/wikipedia.html",
+        "pretty"
+    },
+    tags = {"~@ignored"}
 )
 public class RunWikipediaTest {
 }
