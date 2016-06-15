@@ -20,14 +20,15 @@ import static org.mockito.Mockito.when;
 public class LocatorTest {
 
     private static final Point TEST_POINT = new Point(11, 11);
-    private Locator locatorUnderTest;
 
     @Mock
     private LocatorService locatorServiceMock;
 
+    private Locator locatorUnderTest;
+
     @Before
     public void setUp() {
-        when(locatorServiceMock.locate(any(Point.class))).thenReturn(TEST_POINT);
+        when(locatorServiceMock.geoLocate(any(Point.class))).thenReturn(TEST_POINT);
 
         locatorUnderTest = new Locator(locatorServiceMock);
     }
@@ -36,7 +37,7 @@ public class LocatorTest {
     public void testLocateWithServiceArgument() {
         locatorUnderTest.locate(1, 1);
 
-        verify(locatorServiceMock, times(1)).locate(argThat(new PointMatcher(new Point(1, 1))));
+        verify(locatorServiceMock, times(1)).geoLocate(argThat(new PointMatcher(new Point(1, 1))));
 
         verifyNoMoreInteractions(locatorServiceMock);
     }

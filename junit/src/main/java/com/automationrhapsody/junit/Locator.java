@@ -12,7 +12,7 @@ public class Locator {
         if (x < 0 || y < 0) {
             return new Point(Math.abs(x), Math.abs(y));
         } else {
-            return locatorService.locate(new Point(x, y));
+            return locatorService.geoLocate(new Point(x, y));
         }
     }
 }
