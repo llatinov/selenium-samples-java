@@ -11,13 +11,15 @@ public class WebDriverFactory {
     public WebDriver createInstance(Browsers browser) {
         if (Browsers.CHROME == browser) {
             Properties props = System.getProperties();
-            props.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+            props.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
             return new ChromeDriver();
         } else if (Browsers.IE == browser) {
             Properties props = System.getProperties();
-            props.setProperty("webdriver.ie.driver", "drivers\\IEDriverServer.exe");
+            props.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
             return new InternetExplorerDriver();
         } else {
+            Properties props = System.getProperties();
+            props.setProperty("webdriver.gecko.driver", "drivers/geckodriver64.exe");
             return new FirefoxDriver();
         }
     }

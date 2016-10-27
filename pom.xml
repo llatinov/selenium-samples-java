@@ -9,7 +9,7 @@
     <name>selenium-samples-java</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.version>2.53.0</selenium.version>
+        <selenium.version>3.0.1</selenium.version>
     </properties>
     <modules>
         <module>design-patterns</module>

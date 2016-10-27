@@ -39,6 +39,7 @@ public class WikipediaSteps extends BaseSteps {
     public void clickSearchButton() {
         WebElement searchButton = driver.findElement(By.id("searchButton"));
         searchButton.click();
+        wait(2);
     }
 
     @Then("^Multiple results are shown for '(.*?)'$")
@@ -67,9 +68,10 @@ public class WikipediaSteps extends BaseSteps {
 
     @Then("^Current date is shown$")
     public void checkCurrentDate() {
-        WebElement element = driver.findElement(By.cssSelector("div#mp-otd-footer.hlist.noprint div ul li"));
+        WebElement element = driver.findElement(By
+            .cssSelector("div#mp-otd div.otd-footer.hlist.noprint div ul li span.nowrap"));
 
-        String fullFormat = "Current date: %s (UTC)";
+        String fullFormat = "%s";
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM d, yyyy");
         String expected = String.format(fullFormat, LocalDate.now().format(dateFormat));
 

@@ -8,4 +8,4 @@ Feature:
     Examples:
       | searchTerm | result                     |
       | mercury    | Mercury usually refers to: |
-      | max        | Max may refer to:          |
+      | max        | Max or MAX may refer to:   |
