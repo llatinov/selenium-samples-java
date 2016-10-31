@@ -1,5 +1,7 @@
 package com.automationrhapsody.junit;
 
+import com.automationrhapsody.junit.utils.PointUtils;
+
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -58,11 +60,6 @@ public class LocatorDataDrivenTest {
 
     @Test
     public void testLocateResults() {
-        assertTrue(arePointsEqual(expected, locatorUnderTest.locate(x, y)));
-    }
-
-    private boolean arePointsEqual(Point p1, Point p2) {
-        return p1.getX() == p2.getX()
-            && p1.getY() == p2.getY();
+        assertTrue(PointUtils.arePointsEqual(expected, locatorUnderTest.locate(x, y)));
     }
 }

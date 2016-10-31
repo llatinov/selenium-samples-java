@@ -1,5 +1,7 @@
 package com.automationrhapsody.junit;
 
+import com.automationrhapsody.junit.utils.PointUtils;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,7 +52,7 @@ public class LocatorTest {
     @Test
     public void testLocateLocalResult() {
         Point expected = new Point(1, 1);
-        assertTrue(arePointsEqual(expected, locatorUnderTest.locate(-1, -1)));
+        assertTrue(PointUtils.arePointsEqual(expected, locatorUnderTest.locate(-1, -1)));
     }
 
     private class PointMatcher extends ArgumentMatcher<Point> {
@@ -68,12 +70,7 @@ public class LocatorTest {
             }
             Point actual = (Point) obj;
 
-            return arePointsEqual(actual, expected);
+            return PointUtils.arePointsEqual(actual, expected);
         }
-    }
-
-    private boolean arePointsEqual(Point p1, Point p2) {
-        return p1.getX() == p2.getX()
-            && p1.getY() == p2.getY();
     }
 }
