@@ -12,7 +12,7 @@ Code examples for following Cucumber posts:
  * <a href="http://automationrhapsody.com/introduction-to-cucumber-and-bdd-with-examples/">Introduction to Cucumber and BDD with examples</a>
  * <a href="http://automationrhapsody.com/running-cucumber-tests-in-parallel/">Running Cucumber tests in parallel</a>
  * <a href="http://automationrhapsody.com/create-cucumber-jvm-custom-formatter/">Create Cucumber JVM custom formatter</a>
- 
+
 ## junit ##
 
 Code examples for following JUnit posts:
@@ -24,3 +24,9 @@ Code examples for following JUnit posts:
  * <a href="http://automationrhapsody.com/assert-mockito-mock-method-arguments-no-equals-method-implemented/">Assert Mockito mock method arguments if no equals() method implemented</a>
  * <a href="http://automationrhapsody.com/data-driven-testing-junit-parameterized-tests/">Data driven testing with JUnit parameterized tests</a>
  * <a href="http://automationrhapsody.com/mock-static-methods-junit-powermock-example/">Mock static methods in JUnit with PowerMock example</a>
+
+## wiremock ##
+
+Code examples for following WireMock posts:
+ * <a href="http://automationrhapsody.com/create-simple-rest-api-client-using-jersey/">Create simple REST API client using Jersey</a>
+ * <a href="http://automationrhapsody.com/use-junit-rules-debug-failed-api-tests/">Mock/Stub REST API with WireMock for better unit testing</a>
