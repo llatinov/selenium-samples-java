@@ -15,7 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class LocatorDataDrivenTest {
+public class LocatorParameterizedTest {
 
     private static final Point MOCKED_POINT = new Point(11, 11);
 
@@ -23,8 +23,7 @@ public class LocatorDataDrivenTest {
 
     private Locator locatorUnderTest;
 
-    @Parameterized.Parameters(name
-        = "{index}: Test with X={0}, Y={1}, result is: {2}")
+    @Parameterized.Parameters(name = "{index}: Test with X={0}, Y={1}, result is: {2}")
     public static Iterable<Object[]> data() {
         return Arrays.asList(new Object[][] {
             {-1, -1, new Point(1, 1)},
@@ -45,7 +44,7 @@ public class LocatorDataDrivenTest {
     private final int y;
     private final Point expected;
 
-    public LocatorDataDrivenTest(int x, int y, Point expected) {
+    public LocatorParameterizedTest(int x, int y, Point expected) {
         this.x = x;
         this.y = y;
         this.expected = expected;
