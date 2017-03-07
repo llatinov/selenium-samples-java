@@ -12,6 +12,10 @@ public class Person {
     @JsonProperty
     private String email;
 
+    public Person() {
+        // Needed by Jackson
+    }
+
     public int getId() {
         return id;
     }

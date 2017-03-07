@@ -6,7 +6,9 @@ import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
 
 import javax.ws.rs.ProcessingException;
+import javax.ws.rs.core.HttpHeaders;
 
+import org.apache.http.entity.ContentType;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -36,8 +38,9 @@ public class JerseyPersonRestClientTest {
 
     @Test
     public void testGet_WithBody_PersonJson() {
-        stubFor(get(GET_URL)
-                .willReturn(aResponse().withBody(PERSON_STRING)));
+        stubFor(get(GET_URL).willReturn(aResponse()
+            .withHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+            .withBody(PERSON_STRING)));
 
         Person actual = clientUnderTest.get(1);
 
@@ -46,9 +49,10 @@ public class JerseyPersonRestClientTest {
     }
 
     @Test
-    public void testGet_WithBody_EmptynJson() {
-        stubFor(get(GET_URL)
-                .willReturn(aResponse().withBody("{}")));
+    public void testGet_WithBody_EmptyJson() {
+        stubFor(get(GET_URL).willReturn(aResponse()
+            .withHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+            .withBody("{}")));
 
         Person actual = clientUnderTest.get(1);
 
@@ -56,28 +60,29 @@ public class JerseyPersonRestClientTest {
         assertNull(actual.getLastName());
     }
 
-    @Test
+    @Test(expected = ProcessingException.class)
     public void testGet_WithBody_InvalidJson() {
-        stubFor(get(GET_URL)
-                .willReturn(aResponse().withBody("invalid Json")));
+        stubFor(get(GET_URL).willReturn(aResponse()
+            .withHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+            .withBody("invalid Json")));
 
-        Person actual = clientUnderTest.get(1);
-
-        assertNull(actual);
+        clientUnderTest.get(1);
     }
 
     @Test(expected = ProcessingException.class)
     public void testGet_WithFault() {
-        stubFor(get(GET_URL)
-                .willReturn(aResponse().withFault(Fault.EMPTY_RESPONSE)));
+        stubFor(get(GET_URL).willReturn(aResponse()
+            .withHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+            .withFault(Fault.EMPTY_RESPONSE)));
 
         clientUnderTest.get(1);
     }
 
     @Test
     public void testGet_WithStatus() {
-        stubFor(get(GET_URL)
-                .willReturn(aResponse().withStatus(500).withBody(PERSON_STRING)));
+        stubFor(get(GET_URL).willReturn(aResponse()
+            .withHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+            .withStatus(500).withBody(PERSON_STRING)));
 
         Person actual = clientUnderTest.get(1);
 
