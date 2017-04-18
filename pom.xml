@@ -13,8 +13,6 @@
     <modules>
         <module>design-patterns</module>
         <module>cucumber-parallel</module>
-        <module>junit</module>
-        <module>wiremock</module>
     </modules>
     <build>
         <plugins>
