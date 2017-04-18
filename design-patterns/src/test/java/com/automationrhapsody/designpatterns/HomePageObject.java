@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class HomePageObject {
+
     private WebDriverFacade webDriver;
 
     public HomePageObject(WebDriverFacade webDriver) {
@@ -24,6 +25,6 @@ public class HomePageObject {
     }
 
     public void clearSearch() {
-        webDriver.ExecuteJavaScript("$('span.cancel').click()");
+        webDriver.executeJavaScript("$('span.cancel').click()");
     }
 }

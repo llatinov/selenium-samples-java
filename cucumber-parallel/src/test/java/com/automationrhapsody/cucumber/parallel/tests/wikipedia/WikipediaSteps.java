@@ -68,11 +68,10 @@ public class WikipediaSteps extends BaseSteps {
 
     @Then("^Current date is shown$")
     public void checkCurrentDate() {
-        WebElement element = driver.findElement(By
-            .cssSelector("div#mp-otd div.otd-footer.hlist.noprint div ul li span.nowrap"));
+        WebElement element = driver.findElement(By.cssSelector("div#mp-otd p b a"));
 
         String fullFormat = "%s";
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM d");
         String expected = String.format(fullFormat, LocalDate.now().format(dateFormat));
 
         assertEquals(expected, element.getText());

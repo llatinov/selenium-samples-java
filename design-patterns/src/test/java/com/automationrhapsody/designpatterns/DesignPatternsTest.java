@@ -8,14 +8,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class DesignPatternsTest {
-    Browsers browser = Browsers.CHROME;
-    WebDriverFacade webDriver = null;
-    String url = "http://automationrhapsody.com/examples/utf8icons.html";
+
+    private static final String URL = "http://automationrhapsody.com/examples/utf8icons.html";
+
+    private WebDriverFacade webDriver;
 
     @BeforeClass
     public void setUp() {
-        webDriver = new WebDriverFacade(browser);
-        webDriver.start(url);
+        webDriver = new WebDriverFacade();
+        webDriver.start(URL);
     }
 
     @Test

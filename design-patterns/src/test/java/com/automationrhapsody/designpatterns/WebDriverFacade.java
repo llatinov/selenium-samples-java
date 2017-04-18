@@ -10,29 +10,30 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverFacade {
-    private WebDriver webDriver = null;
-    private long waitForElement = 5;
 
-    public WebDriverFacade(Browsers browser) {
-        WebDriverFactory factory = new WebDriverFactory();
-        webDriver = factory.createInstance(browser);
+    private static final long WAIT_SECONDS = 5;
+
+    private WebDriver driver;
+
+    public WebDriverFacade() {
+        driver = WebDriverFactory.createWebDriver();
     }
 
     public void start(String url) {
-        webDriver.get(url);
+        driver.get(url);
     }
 
     public void stop() {
-        webDriver.quit();
+        driver.quit();
     }
 
-    public Object ExecuteJavaScript(String script) {
-        return ((JavascriptExecutor) webDriver).executeScript("return " + script);
+    public Object executeJavaScript(String script) {
+        return ((JavascriptExecutor) driver).executeScript(script);
     }
 
     public WebElement findElement(By by) {
         try {
-            WebDriverWait wait = new WebDriverWait(webDriver, waitForElement);
+            WebDriverWait wait = new WebDriverWait(driver, WAIT_SECONDS);
             return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Exception ex) {
             return NullWebElement.getNull();
@@ -40,7 +41,7 @@ public class WebDriverFacade {
     }
 
     public List<WebElement> findElements(By by) {
-        WebDriverWait wait = new WebDriverWait(webDriver, waitForElement);
+        WebDriverWait wait = new WebDriverWait(driver, WAIT_SECONDS);
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 }

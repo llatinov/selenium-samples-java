@@ -1,26 +1,30 @@
 package com.automationrhapsody.designpatterns;
 
-import java.util.Properties;
+import java.io.File;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class WebDriverFactory {
-    public WebDriver createInstance(Browsers browser) {
-        if (Browsers.CHROME == browser) {
-            Properties props = System.getProperties();
-            props.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-            return new ChromeDriver();
-        } else if (Browsers.IE == browser) {
-            Properties props = System.getProperties();
-            props.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
-            return new InternetExplorerDriver();
-        } else {
-            Properties props = System.getProperties();
-            props.setProperty("webdriver.gecko.driver", "drivers/geckodriver64.exe");
-            return new FirefoxDriver();
+class WebDriverFactory {
+
+    private static final String WEB_DRIVER_FOLDER = "webdrivers";
+
+    public static WebDriver createWebDriver() {
+        Browser browser = Browser.fromString(System.getProperty("browser"));
+        String arch = System.getProperty("os.arch").contains("64") ? "64" : "32";
+        String os = System.getProperty("os.name").toLowerCase().contains("win") ? "win.exe" : "linux";
+        String path = browser.getName() + "driver-" + arch + "-" + os;
+        System.setProperty("webdriver." + browser.getName() + ".driver",
+            driversFolder(new File("").getAbsolutePath()) + path);
+        return browser.getDriver();
+    }
+
+    private static String driversFolder(String path) {
+        File file = new File(path);
+        for (String item : file.list()) {
+            if (WEB_DRIVER_FOLDER.equals(item)) {
+                return file.getAbsolutePath() + "/" + WEB_DRIVER_FOLDER + "/";
+            }
         }
+        return driversFolder(file.getParent());
     }
 }
