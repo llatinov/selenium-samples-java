@@ -12,9 +12,9 @@ class WebDriverFactory {
         Browser browser = Browser.fromString(System.getProperty("browser"));
         String arch = System.getProperty("os.arch").contains("64") ? "64" : "32";
         String os = System.getProperty("os.name").toLowerCase().contains("win") ? "win.exe" : "linux";
-        String path = browser.getName() + "driver-" + arch + "-" + os;
-        System.setProperty("webdriver." + browser.getName() + ".driver",
-            driversFolder(new File("").getAbsolutePath()) + path);
+        String driverFileName = browser.getName() + "driver-" + arch + "-" + os;
+        String driverFilePath = driversFolder(new File("").getAbsolutePath());
+        System.setProperty("webdriver." + browser.getName() + ".driver", driverFilePath + driverFileName);
         return browser.getDriver();
     }
 
