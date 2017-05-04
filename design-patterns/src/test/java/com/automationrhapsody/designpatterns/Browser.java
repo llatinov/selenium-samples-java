@@ -14,11 +14,11 @@ public enum Browser {
     IE("ie", InternetExplorerDriver::new);
 
     private String name;
-    private Supplier<WebDriver> consumer;
+    private Supplier<WebDriver> driverSupplier;
 
-    Browser(String name, Supplier<WebDriver> consumer) {
+    Browser(String name, Supplier<WebDriver> driverSupplier) {
         this.name = name;
-        this.consumer = consumer;
+        this.driverSupplier = driverSupplier;
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public enum Browser {
     }
 
     public WebDriver getDriver() {
-        return consumer.get();
+        return driverSupplier.get();
     }
 
     public static Browser fromString(String value) {
