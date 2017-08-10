@@ -14,7 +14,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 public class WikipediaSteps extends BaseSteps {
@@ -44,15 +43,14 @@ public class WikipediaSteps extends BaseSteps {
 
     @Then("^Multiple results are shown for '(.*?)'$")
     public void assertMultipleResults(String searchResults) {
-        WebElement results = driver.findElement(By.cssSelector("div#mw-content-text.mw-content-ltr p"));
-        assertEquals(searchResults, results.getText());
+        WebElement firstSearchResult = driver.findElement(By.cssSelector("div#mw-content-text.mw-content-ltr p"));
+        assertEquals(searchResults, firstSearchResult.getText());
     }
 
     @Then("^Single result is shown for '(.*?)'$")
     public void assertSingleResult(String searchResults) {
-        WebElement results = driver.findElement(By.cssSelector("div#mw-content-text.mw-content-ltr p"));
-        assertFalse(results.getText().contains(searchResults + " may refer to:"));
-        assertTrue(results.getText().startsWith(searchResults));
+        WebElement articleName = driver.findElement(By.id("firstHeading"));
+        assertEquals(articleName.getText(), searchResults);
     }
 
     @Then("^This is (.*?)good article$")
